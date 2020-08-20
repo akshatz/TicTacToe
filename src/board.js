@@ -1,45 +1,93 @@
-export default
- class board {
+export default class board {
     constructor() {
       this.cells = [
         ['', '', ''],
         ['', '', ''],
         ['', '', '']
       ];
-      result=this.cells
-        win = true
-        i
-    
     }
-    condition(){
-        if(this.cells[i][0]=='x' && this.cells[i][1] == 'x' && this.cells[i][2] == 'x'){
-            result ="X Wins";
-            win =true;
-        }
-        if(this.cells[0][i] == 'x' && this.cells[1][i] == 'x' && this.cells[2][i] == 'x'){
-            result = "X Wins";
-            win = true;
+  isGameOver() {
+        return this.getPossibleMoves().length === 0 || this.playerHas3InARow('x') || this.playerHas3InARow('o');
+      }
+    
+      clone() {
+        let clone = new board();
+    
+        for (let i=0; i<3; i++) {
+          for (let j=0; j<3; j++) {
+            clone.cells[i][j] = this.cells[i][j];
+          }
         }
     
-    if ((this.cells[0][0] == 'x' && this.cells[1][1] == 'x' && this.cells[2][2] == 'x') || (this.cells[2][0] == 'x' && this.cells[1][1] == 'x' && this.cells[0][2] == 'x')) {
-        result = "X Wins";
-        win = true;
-    }
-    for(i = 0; i <3; i++) {
-        if ((this.cells[i][0] == 'o' && this.cells[i][1] == 'o' && this.cells[i][2] == 'o' || this.cells[0][i] == 'o' && this.cells[1][i] == 'o' && this.cells[2][i] == 'o')) {
-            result = "O Wins";
-            win = true;
-        }
-        if ((this.cells[0][0] == 'o' && this.cells[1][1] == 'o' && this.cells[2][2] == 'o') || (this.cells[2][0] == 'o' && this.cells[1][1] == 'o' && this.cells[0][2] == 'o')) {
-            result = "O Wins";
-            win = true;
-        }
-        else {
-            if (freeSpots == 0 || !win) {
-                result = "Tie";
+        return clone;
+      }
+    
+      getPossibleMoves() {
+        let moves = [];
+        for (let i=0; i<3; i++) {
+          for (let j=0; j<3; j++) {
+            if (this.cells[i][j] === '') {
+              moves.push({x: i, y: j});
             }
+          }
         }
+        return moves;
+      }
+    
+      doMove(x, y, player) {
+        if (this.cells[x][y] !== '') {
+          return false;
+        }
+    
+        this.cells[x][y] = player;
+        return true;
+      }
+    
+      getScore() {
+        let score = 0;
+        if (this.playerHas3InARow('x')) {
+          score -= 100;
+        }
+        if (this.playerHas3InARow('o')) {
+          score += 100;
+        }
+        return score;
+      }
+    
+      playerHas3InARow(player) {
+        // Horizontal rows
+        for (let i=0; i<3; i++) {
+          if (this.cells[0][i] === player && this.cells[1][i] === player && this.cells[2][i] === player) {
+            return true;
+          }
+        }
+    
+        // Vertical rows
+        for (let i=0; i<3; i++) {
+          if (this.cells[i][0] === player && this.cells[i][1] === player && this.cells[i][2] === player) {
+            return true;
+          }
+        }
+    
+        // Diagonals
+        if (this.cells[0][0] === player && this.cells[1][1] === player && this.cells[2][2] === player) {
+          return true;
+        }
+        if (this.cells[2][0] === player && this.cells[1][1] === player && this.cells[0][2] === player) {
+          return true;
+        }
+    
+        return false;
+      }
+    
+      toString() {
+        let str = "";
+        for (let i=0; i<3; i++) {
+          for (let j=0; j<3; j++) {
+            str += this.cells[j][i];
+          }
+          str += "\n"
+        }
+        return str;
+      }
     }
-    return result
-    }
-}
