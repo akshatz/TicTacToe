@@ -6,7 +6,7 @@ export default class board {
         ['', '', '']
       ];
     }
-  isGameOver() {
+  	isGameOver() {
         return this.getPossibleMoves().length === 0 || this.playerHas3InARow('x') || this.playerHas3InARow('o');
       }
     
