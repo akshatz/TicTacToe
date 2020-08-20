@@ -1,4 +1,4 @@
-export default class Board {
+export default class board {
     constructor() {
       this.cells = [
         ['', '', ''],
@@ -12,7 +12,7 @@ export default class Board {
     }
   
     clone() {
-      let clone = new Board();
+      let clone = new board();
   
       for (let i=0; i<3; i++) {
         for (let j=0; j<3; j++) {

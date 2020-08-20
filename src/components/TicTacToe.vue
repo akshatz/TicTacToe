@@ -18,14 +18,14 @@
   </div>
 </template>
 <script>
-  import Board from "./Board";
+  import board from "../board";
 
   export default {
 
     data() { return {
       gameOver: false,
       gameOverText: '',
-      board: new Board()
+      board: new board()
     } },
 
     methods: {
@@ -76,11 +76,11 @@
         let moves = board.getPossibleMoves();
         for (let i = 0; i < moves.length; i++) {
           let move = moves[i];
-          let newBoard = board.clone();
-          newBoard.doMove(move.x, move.y, player);
+          let newboard = board.clone();
+          newboard.doMove(move.x, move.y, player);
 
           // Recursively call the minimax function for the new board.
-          const score = this.minimax(newBoard, player === 'x' ? 'o' : 'x', depth + 1).score;
+          const score = this.minimax(newboard, player === 'x' ? 'o' : 'x', depth + 1).score;
 
           // If the score is better than the best saved score update the best saved
           // score to this move.
