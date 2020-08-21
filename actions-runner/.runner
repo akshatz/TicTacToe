@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 2,
+  "agentName": "akshat-zala",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelines.actions.githubusercontent.com/NodDh6nMaACSA8RvlHYJycgmen8ElbJUYzAHZPJid27dqUjzFq",
+  "gitHubUrl": "https://github.com/akshatz/TicTacToe",
+  "workFolder": "_work"
+}
