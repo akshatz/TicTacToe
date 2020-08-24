@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import TicTacToe from './components/TicTacToe.vue';
 import Cell from './components/Cell.vue';
-
+// Component == tag in html
 Vue.component('tic-tac-toe', TicTacToe);
 Vue.component('Cell', Cell);
 new Vue({
