@@ -7,7 +7,5 @@ Vue.component('tic-tac-toe', TicTacToe);
 Vue.component('Cell', Cell);
 new Vue({
   el: '#app',
-  render: h => {
-    return h(App);
-  }
+  render: h => h(App)
 })
