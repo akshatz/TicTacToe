@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="heading">
-      <h1>Tic-Tac-Toe</h1>
+      <h1>Tic Tac Toe</h1>
     </div>
     <div class="tictactoe-board">
       <div v-for="(n, i) in 3" :key="i">
